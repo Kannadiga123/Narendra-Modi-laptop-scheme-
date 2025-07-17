@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ಸರಕಾರಿ ಉಚಿತ ಲ್ಯಾಪ್‌ಟಾಪ್ ಯೋಜನೆ</title>
+  <style>
+    body {
+      font-family: 'Noto Sans Kannada', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 680px;
+      background: #fff;
+      margin: auto;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+    h1 {
+      color: #004aad;
+    }
+    img.banner {
+      width: 100%;
+      max-height: 260px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .btn {
+      margin-top: 25px;
+      display: inline-block;
+      padding: 16px 32px;
+      font-size: 18px;
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    .progress-container {
+      display: flex;
+      justify-content: center;
+      margin: 25px 0;
+    }
+    .dot {
+      height: 18px;
+      width: 18px;
+      margin: 0 4px;
+      background-color: #ccc;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+    .dot.active {
+      background-color: #4caf50;
+    }
+    .info {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #d90000;
+    }
+    .success {
+      color: green;
+      font-size: 18px;
+      margin-top: 20px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://i.imgur.com/sgI5Wdy.jpg" class="banner" alt="Banner">
+    <h1>ಉಚಿತ ಲ್ಯಾಪ್‌ಟಾಪ್ ಯೋಜನೆ 2025</h1>
+    <p>ಈ ಯೋಜನೆಯಡಿ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಉಚಿತ ಲ್ಯಾಪ್‌ಟಾಪ್ ಲಭ್ಯವಿದೆ.</p>
+
+    <div class="progress-container" id="progressBar">
+      <!-- 20 dots -->
+      <!-- Will fill with JS -->
+    </div>
+
+    <div class="info" id="infoText">ಈ ಲಿಂಕ್ ಅನ್ನು 20 ಜನರಿಗೆ ಹಂಚಿ.</div>
+
+    <a href="https://xpshort.com/8fkgRL8h" class="btn" onclick="addShare(); return false;">ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ ಮತ್ತು ಶೇರ್ ಮಾಡಿ</a>
+
+    <div class="success" id="successMsg">ನೀವು ಅರ್ಜಿ ಸಲ್ಲಿಸಲು ಯೋಗ್ಯರಾಗಿದ್ದೀರಿ!👇</div>
+  </div>
+
+  <script>
+    let shares = 0;
+    const maxShares = 20;
+
+    function updateProgress() {
+      const bar = document.getElementById("progressBar");
+      bar.innerHTML = '';
+      for (let i = 0; i < maxShares; i++) {
+        const dot = document.createElement("span");
+        dot.className = "dot" + (i < shares ? " active" : "");
+        bar.appendChild(dot);
+      }
+
+      const infoText = document.getElementById("infoText");
+      const successMsg = document.getElementById("successMsg");
+      if (shares < maxShares) {
+        infoText.innerText = `ಇನ್ನು ${maxShares - shares} ಜನರಿಗೆ ಹಂಚಿ`;
+      } else {
+        infoText.style.display = "none";
+        successMsg.style.display = "block";
+      }
+    }
+
+    function addShare() {
+      if (shares < maxShares) {
+        shares++;
+        updateProgress();
+        window.open("https://xpshort.com/8fkgRL8h", "_blank");
+      }
+    }
+
+    window.onload = updateProgress;
+  </script>
+</body>
+</html>
