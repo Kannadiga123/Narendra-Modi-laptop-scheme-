@@ -4,47 +4,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ಸರಕಾರಿ ಉಚಿತ ಲ್ಯಾಪ್‌ಟಾಪ್ ಯೋಜನೆ</title>
+  <title>ಉಚಿತ ಲ್ಯಾಪ್‌ಟಾಪ್ ಯೋಜನೆ</title>
   <style>
     body {
       font-family: 'Noto Sans Kannada', sans-serif;
-      background-color: #f9f9f9;
+      background: linear-gradient(to right, #f7f8fc, #e3f2fd);
       margin: 0;
       padding: 20px;
       text-align: center;
     }
     .container {
-      max-width: 680px;
+      max-width: 700px;
       background: #fff;
       margin: auto;
       padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+      border-radius: 14px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.1);
     }
     h1 {
-      color: #004aad;
+      color: #003399;
     }
     img.banner {
       width: 100%;
-      max-height: 260px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 20px;
+      border-radius: 12px;
+      margin-bottom: 15px;
     }
     .btn {
-      margin-top: 25px;
+      margin-top: 20px;
       display: inline-block;
-      padding: 16px 32px;
+      padding: 16px 30px;
       font-size: 18px;
-      background-color: #007bff;
-      color: #fff;
+      background-color: #25d366;
+      color: white;
       border-radius: 10px;
       text-decoration: none;
-    }
-    .progress-container {
-      display: flex;
-      justify-content: center;
-      margin: 25px 0;
     }
     .dot {
       height: 18px;
@@ -53,74 +46,103 @@
       background-color: #ccc;
       border-radius: 50%;
       display: inline-block;
-      transition: background 0.3s;
     }
     .dot.active {
       background-color: #4caf50;
     }
-    .info {
-      margin-top: 10px;
-      font-size: 16px;
-      color: #d90000;
-    }
-    .success {
-      color: green;
-      font-size: 18px;
+    .info, .success, .form-section, .final-message {
       margin-top: 20px;
+      font-size: 16px;
+    }
+    .success, .form-section, .final-message {
       display: none;
+    }
+    input {
+      display: block;
+      width: 90%;
+      margin: 10px auto;
+      padding: 12px;
+      border: 1px solid #aaa;
+      border-radius: 6px;
+    }
+    .form-section button {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="https://i.imgur.com/sgI5Wdy.jpg" class="banner" alt="Banner">
+    <img src="https://i.imgur.com/UOyk6OU.jpg" alt="Laptop Scheme" class="banner" />
     <h1>ಉಚಿತ ಲ್ಯಾಪ್‌ಟಾಪ್ ಯೋಜನೆ 2025</h1>
-    <p>ಈ ಯೋಜನೆಯಡಿ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಉಚಿತ ಲ್ಯಾಪ್‌ಟಾಪ್ ಲಭ್ಯವಿದೆ.</p>
+    <p>ಈ ಯೋಜನೆಯಡಿ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಉಚಿತ ಲ್ಯಾಪ್‌ಟಾಪ್ ಲಭ್ಯವಿದೆ. ತಕ್ಷಣ ಅರ್ಜಿ ಹಾಕಿ.</p>
 
-    <div class="progress-container" id="progressBar">
-      <!-- 20 dots -->
-      <!-- Will fill with JS -->
+    <div id="progressSection">
+      <div id="progressDots"></div>
+      <p class="info" id="progressText">ಈ ಲಿಂಕ್ ಅನ್ನು 20 ಜನರಿಗೆ WhatsApp ನಿಂದ ಹಂಚಿ.</p>
+      <a href="#" class="btn" onclick="shareWhatsApp(); return false;">WhatsApp ನಲ್ಲಿ ಹಂಚಿ</a>
     </div>
 
-    <div class="info" id="infoText">ಈ ಲಿಂಕ್ ಅನ್ನು 20 ಜನರಿಗೆ ಹಂಚಿ.</div>
+    <div class="success" id="shareSuccess">
+      <strong>ಶುಭಾಶಯಗಳು!</strong> ನೀವು ಯಶಸ್ವಿಯಾಗಿ 20 ಜನರಿಗೆ ಹಂಚಿದ್ದೀರಿ. ಮುಂದಿನ ಹಂತದತ್ತ ಸಾಗಿರಿ 👇
+    </div>
 
-    <a href="https://xpshort.com/8fkgRL8h" class="btn" onclick="addShare(); return false;">ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ ಮತ್ತು ಶೇರ್ ಮಾಡಿ</a>
+    <div class="form-section" id="formSection">
+      <h3>ತಮಗೆ ಸಂಬಂಧಿಸಿದ ವಿವರಗಳನ್ನು ನಮೂದಿಸಿ:</h3>
+      <input type="text" placeholder="ಹೆಸರು" id="name">
+      <input type="text" placeholder="ಶೈಕ್ಷಣಿಕ ಅರ್ಹತೆ" id="edu">
+      <input type="text" placeholder="ಮೊಬೈಲ್ ನಂಬರ್" id="mobile">
+      <input type="text" placeholder="ವಿಳಾಸ" id="address">
+      <button onclick="submitForm()">Submit</button>
+    </div>
 
-    <div class="success" id="successMsg">ನೀವು ಅರ್ಜಿ ಸಲ್ಲಿಸಲು ಯೋಗ್ಯರಾಗಿದ್ದೀರಿ!👇</div>
+    <div class="final-message" id="finalMsg">
+      <h2>🎉 ಅಭಿನಂದನೆಗಳು! 🎉</h2>
+      <p>ನೀವು ಯಶಸ್ವಿಯಾಗಿ ಅರ್ಜಿ ಸಲ್ಲಿಸಿದ್ದೀರಿ. ನಮ್ಮ ತಂಡದಿಂದ ತ್ವರಿತವಾಗಿ ನಿಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಲಾಗುವುದು.</p>
+      <p>ಈ ಯೋಜನೆ ಮಿತಿಗಣಿಸಲಾದವರಿಗಷ್ಟೆ ಲಭ್ಯವಿದೆ. ತಕ್ಷಣದ ಪ್ರಯತ್ನ ಮಾಡಿ!</p>
+    </div>
   </div>
 
   <script>
     let shares = 0;
     const maxShares = 20;
 
-    function updateProgress() {
-      const bar = document.getElementById("progressBar");
-      bar.innerHTML = '';
+    function updateDots() {
+      const container = document.getElementById("progressDots");
+      container.innerHTML = "";
       for (let i = 0; i < maxShares; i++) {
         const dot = document.createElement("span");
         dot.className = "dot" + (i < shares ? " active" : "");
-        bar.appendChild(dot);
-      }
-
-      const infoText = document.getElementById("infoText");
-      const successMsg = document.getElementById("successMsg");
-      if (shares < maxShares) {
-        infoText.innerText = `ಇನ್ನು ${maxShares - shares} ಜನರಿಗೆ ಹಂಚಿ`;
-      } else {
-        infoText.style.display = "none";
-        successMsg.style.display = "block";
+        container.appendChild(dot);
       }
     }
 
-    function addShare() {
+    function shareWhatsApp() {
       if (shares < maxShares) {
         shares++;
-        updateProgress();
-        window.open("https://xpshort.com/8fkgRL8h", "_blank");
+        updateDots();
+        document.getElementById("progressText").innerText = `ಇನ್ನು ${maxShares - shares} ಜನರಿಗೆ ಹಂಚಿ`;
+        const message = encodeURIComponent("ನಾನು ಉಚಿತ ಲ್ಯಾಪ್‌ಟಾಪ್ ಯೋಜನೆಗೆ ಅರ್ಜಿ ಹಾಕುತ್ತಿದ್ದೇನೆ. ನೀವು ಕೂಡ ಅರ್ಜಿ ಹಾಕಿ: https://xpshort.com/8fkgRL8h");
+        window.open("https://wa.me/?text=" + message, "_blank");
+        if (shares >= maxShares) {
+          document.getElementById("progressSection").style.display = "none";
+          document.getElementById("shareSuccess").style.display = "block";
+          document.getElementById("formSection").style.display = "block";
+        }
       }
     }
 
-    window.onload = updateProgress;
+    function submitForm() {
+      document.getElementById("formSection").style.display = "none";
+      document.getElementById("finalMsg").style.display = "block";
+    }
+
+    updateDots();
   </script>
 </body>
 </html>
